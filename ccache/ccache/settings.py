@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lkes#q=ngyy0lom%88d$=s@mbd^@kdn(ulri6^fjd&^pbt3ovm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
 
@@ -142,7 +142,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/hour',
-        'user': '6/second',
+        'anon': '10/hour',
+        'user': '60/second',
     }
 }
