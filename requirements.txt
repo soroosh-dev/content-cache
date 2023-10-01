@@ -1,0 +1,11 @@
+django
+djangorestframework
+markdown
+django-filter
+memory_profiler
+rcssmin
+rjsmin
+pillow
+redis
+python-magic
+gunicorn
