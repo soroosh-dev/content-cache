@@ -61,3 +61,9 @@ mkdir ccache/tmp
 touch ./logs/uploads.log
 chown nobody:nogroup ./logs/uploads.log
 
+cd ccache
+python manage.py makemigrations
+python manage.py migrate
+python manage.py loaddata users.json
+
+systemctl restart gunicorn
