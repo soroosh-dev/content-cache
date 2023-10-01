@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from .permissions import UnauthenticatedForPostAuthenticatedForOther
 
@@ -67,6 +68,9 @@ class AccountManager(APIView):
 
         if user.check_password(request.data['password']):
             serializer = UserSerializer(user)
+            if not serializer.data['token']:
+                Token.objects.create(user=user)
+                serializer = UserSerializer(user)
             return Response(serializer.data)
         return Response(
                     {"errors": ["Provided credentials are invalid.",]},
